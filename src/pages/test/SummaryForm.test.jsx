@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import SummaryForm from '../SummaryForm';
 
 test('Initial conditions', () => {
@@ -19,9 +20,9 @@ test('Checkbox enables button on first click and disables on second click', () =
   });
   const confirmButton = screen.getByRole('button', { name: 'Confirm order' });
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(confirmButton).toBeEnabled();
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(confirmButton).toBeDisabled();
 });
